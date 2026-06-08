@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ai-glow {
+            box-shadow: inset 0 0 0 2px rgba(0, 227, 253, 0.15);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#00e3fd",
+                        "surface-container-low": "#f0f3ff",
+                        "inverse-surface": "#263143",
+                        "surface-bright": "#f9f9ff",
+                        "surface-container-highest": "#d8e3fb",
+                        "on-secondary-fixed": "#001f24",
+                        "tertiary-fixed": "#e0e3e5",
+                        "surface-dim": "#cfdaf2",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#bcbfc1",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#b1c5ff",
+                        "surface-tint": "#2559bd",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#d8e3fb",
+                        "on-secondary-container": "#00616d",
+                        "on-primary-fixed-variant": "#00419e",
+                        "on-surface": "#111c2d",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#dee8ff",
+                        "tertiary": "#343739",
+                        "inverse-primary": "#b1c5ff",
+                        "secondary-fixed-dim": "#00daf3",
+                        "on-background": "#111c2d",
+                        "tertiary-container": "#4b4e50",
+                        "primary-fixed": "#dae2ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#9cf0ff",
+                        "on-primary-container": "#a5bdff",
+                        "secondary": "#006875",
+                        "outline": "#737784",
+                        "on-tertiary-fixed-variant": "#444749",
+                        "primary": "#00327d",
+                        "tertiary-fixed-dim": "#c4c7c9",
+                        "outline-variant": "#c3c6d5",
+                        "surface": "#f9f9ff",
+                        "primary-container": "#0047ab",
+                        "on-surface-variant": "#434653",
+                        "inverse-on-surface": "#ecf1ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004f58",
+                        "background": "#f9f9ff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#001946",
+                        "surface-container": "#e7eeff",
+                        "on-tertiary-fixed": "#191c1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-margin-desktop": "40px",
+                        "container-margin-mobile": "16px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "stack-lg": "48px",
+                        "stack-sm": "12px",
+                        "stack-md": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-md": ["Geist"],
+                        "label-sm": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin-mobile h-16 bg-surface dark:bg-surface-dim shadow-sm">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="menu">menu</button>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed">RADS CLASSES</span>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed bg-surface-container-high">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9B5olWBJ0s0TeW5tRKbuHbxFtWzgQaTORzOm067aD3eEczsTb0_6d_UFB3sbnbmz9kxSnCiihOyZkHcRnUUsdRH6hAF1o88L-uscGkF1q5NheAhWvv720syTlv4o8aRb76Gq6GebSlkx_BIfVLKdd_DKzEyXNfOL8AauqQOtOzoCveF_ptWaI8tqa4n5vWSn04CA1uLL9Z4sV8BBWVK9yaW95TYCOYLYC_g-uX4-eX4JbBA8GjapK6RS_dOXQNtv2NhGe0VgnrTo"/>
+</div>
+</header>
+<main class="pt-20 px-container-margin-mobile md:px-container-margin-desktop max-w-[1280px] mx-auto">
+<!-- Welcome Section -->
+<section class="mb-stack-md">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-2">Assessment Center</h1>
+<p class="font-body-md text-on-surface-variant">Track your progress and challenge your limits.</p>
+</section>
+<!-- Tabs Navigation -->
+<nav class="flex gap-4 mb-stack-md border-b border-outline-variant overflow-x-auto whitespace-nowrap scrollbar-hide">
+<button class="pb-3 px-2 font-label-md text-label-md border-b-2 border-primary text-primary transition-all" id="tab-upcoming" onclick="switchTab('upcoming')">Upcoming Tests</button>
+<button class="pb-3 px-2 font-label-md text-label-md border-b-2 border-transparent text-on-surface-variant hover:text-primary transition-all" id="tab-completed" onclick="switchTab('completed')">Completed Quizzes</button>
+<button class="pb-3 px-2 font-label-md text-label-md border-b-2 border-transparent text-on-surface-variant hover:text-primary transition-all" id="tab-analytics" onclick="switchTab('analytics')">Analytics</button>
+</nav>
+<!-- Upcoming Tests View -->
+<div class="space-y-gutter" id="content-upcoming">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Mock Test Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-[0_4px_20px_0_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary-container rounded-lg">
+<span class="material-symbols-outlined text-white" data-icon="quiz">quiz</span>
+</div>
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded-full font-label-sm text-label-sm">Premium</span>
+</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Physics Full Mock #04</h3>
+<div class="flex items-center gap-4 text-on-surface-variant mb-6">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="timer">timer</span>
+<span class="font-label-sm text-label-sm">180 Mins</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="format_list_bulleted">format_list_bulleted</span>
+<span class="font-label-sm text-label-sm">90 Questions</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-label-md text-label-md py-3 rounded-lg hover:bg-primary-container transition-colors active:scale-95 duration-150">Start Test Now</button>
+</div>
+<!-- AI Recommended Test Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-[0_4px_20px_0_rgba(0,0,0,0.04)] ai-glow overflow-hidden relative">
+<div class="absolute top-0 right-0 p-2 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm rounded-bl-xl flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="auto_awesome">auto_awesome</span>
+                        AI Recommendation
+                    </div>
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary-container rounded-lg">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="psychology">psychology</span>
+</div>
+</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Weakness Drill: Organic Chem</h3>
+<div class="flex items-center gap-4 text-on-surface-variant mb-6">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="timer">timer</span>
+<span class="font-label-sm text-label-sm">45 Mins</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="format_list_bulleted">format_list_bulleted</span>
+<span class="font-label-sm text-label-sm">30 Questions</span>
+</div>
+</div>
+<button class="w-full bg-secondary-container text-on-secondary-container font-label-md text-label-md py-3 rounded-full hover:bg-secondary-fixed transition-colors active:scale-95 duration-150">Begin Targeted Drill</button>
+</div>
+<!-- Generic Test Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-[0_4px_20px_0_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-surface-container-high rounded-lg">
+<span class="material-symbols-outlined text-outline" data-icon="science">science</span>
+</div>
+</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Mathematics: Calculus 101</h3>
+<div class="flex items-center gap-4 text-on-surface-variant mb-6">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="timer">timer</span>
+<span class="font-label-sm text-label-sm">60 Mins</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="format_list_bulleted">format_list_bulleted</span>
+<span class="font-label-sm text-label-sm">40 Questions</span>
+</div>
+</div>
+<button class="w-full border border-primary text-primary font-label-md text-label-md py-3 rounded-lg hover:bg-surface-container-low transition-colors active:scale-95 duration-150">View Syllabus</button>
+</div>
+</div>
+</div>
+<!-- Analytics View (Hidden by Default) -->
+<div class="hidden space-y-gutter" id="content-analytics">
+<!-- Performance Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Score Trend Graph -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-[0_4px_20px_0_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Performance Trend</h3>
+<div class="flex gap-2">
+<span class="w-3 h-3 rounded-full bg-primary inline-block"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Your Score</span>
+</div>
+</div>
+<!-- Placeholder Line Graph SVG -->
+<div class="h-64 w-full relative group">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 400 100">
+<path class="stroke-primary" d="M 0 80 Q 50 70 100 40 T 200 60 T 300 20 T 400 30" fill="none" stroke="var(--primary)" stroke-width="2"></path>
+<path class="opacity-10" d="M 0 80 Q 50 70 100 40 T 200 60 T 300 20 T 400 30 L 400 100 L 0 100 Z" fill="url(#grad)"></path>
+<defs>
+<lineargradient id="grad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:var(--primary);stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:var(--primary);stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="absolute inset-0 flex justify-between items-end pb-2 px-2 border-l border-b border-outline-variant">
+<span class="font-label-sm text-label-sm text-outline-variant">Jan</span>
+<span class="font-label-sm text-label-sm text-outline-variant">Feb</span>
+<span class="font-label-sm text-label-sm text-outline-variant">Mar</span>
+<span class="font-label-sm text-label-sm text-outline-variant">Apr</span>
+</div>
+</div>
+</div>
+<!-- Stats Summary -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-[0_4px_20px_0_rgba(0,0,0,0.04)] flex flex-col justify-between">
+<div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-6">Stats Overview</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-on-surface-variant">Average Score</span>
+<span class="font-headline-lg-mobile text-primary">82%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-on-surface-variant">Accuracy</span>
+<span class="font-headline-lg-mobile text-secondary">91%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-on-surface-variant">Test Attempted</span>
+<span class="font-headline-lg-mobile text-on-surface">12</span>
+</div>
+</div>
+</div>
+<div class="mt-8 p-4 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-2 text-secondary-container mb-2">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+<span class="font-label-md text-label-md font-bold">Improvement</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Your score in Calculus increased by 15% this week!</p>
+</div>
+</div>
+<!-- Subject Breakdown -->
+<div class="lg:col-span-3 bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-[0_4px_20px_0_rgba(0,0,0,0.04)]">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-6">Subject Proficiency</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Math -->
+<div>
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-md text-label-md text-on-surface">Mathematics</span>
+<span class="font-label-sm text-label-sm text-primary">Strong</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[88%] rounded-full"></div>
+</div>
+</div>
+<!-- Physics -->
+<div>
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-md text-label-md text-on-surface">Physics</span>
+<span class="font-label-sm text-label-sm text-secondary-container">Average</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container w-[65%] rounded-full"></div>
+</div>
+</div>
+<!-- Chemistry -->
+<div>
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-md text-label-md text-on-surface">Chemistry</span>
+<span class="font-label-sm text-label-sm text-error">Weak</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-error w-[42%] rounded-full"></div>
+</div>
+</div>
+<!-- Biology -->
+<div>
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-md text-label-md text-on-surface">Biology</span>
+<span class="font-label-sm text-label-sm text-primary">Mastery</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[95%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Completed View (Simplified List) -->
+<div class="hidden space-y-4" id="content-completed">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Mid-term Algebra Quiz</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Completed on Oct 12, 2023</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-lg-mobile text-primary">48/50</p>
+<p class="font-label-sm text-label-sm text-secondary">A+</p>
+</div>
+</div>
+<div class="p-4 border-b border-outline-variant flex justify-between items-center hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Unit Test: Thermodynamics</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Completed on Oct 08, 2023</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-lg-mobile text-on-surface">32/50</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">B</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-lowest dark:bg-inverse-surface shadow-[0_-4px_20px_0_rgba(0,0,0,0.04)] rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+<span class="font-label-sm text-label-sm">Courses</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-container text-on-secondary-container dark:text-secondary-container rounded-full px-4 py-1 scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span>
+<span class="font-label-sm text-label-sm">Tests</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-label-sm text-label-sm">AI</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        function switchTab(tabId) {
+            // Hide all contents
+            document.getElementById('content-upcoming').classList.add('hidden');
+            document.getElementById('content-completed').classList.add('hidden');
+            document.getElementById('content-analytics').classList.add('hidden');
+            
+            // Show selected content
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+            
+            // Reset tab styles
+            const tabs = ['upcoming', 'completed', 'analytics'];
+            tabs.forEach(t => {
+                const tabBtn = document.getElementById('tab-' + t);
+                tabBtn.classList.remove('border-primary', 'text-primary');
+                tabBtn.classList.add('border-transparent', 'text-on-surface-variant');
+            });
+            
+            // Activate selected tab style
+            const activeTab = document.getElementById('tab-' + tabId);
+            activeTab.classList.remove('border-transparent', 'text-on-surface-variant');
+            activeTab.classList.add('border-primary', 'text-primary');
+        }
+
+        // Initialize with upcoming
+        window.onload = () => switchTab('upcoming');
+    </script>
+</body></html>

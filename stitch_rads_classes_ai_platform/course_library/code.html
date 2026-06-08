@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Course Management - RADS CLASSES</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "secondary-container": "#00e3fd",
+                "surface-container-low": "#f0f3ff",
+                "inverse-surface": "#263143",
+                "surface-bright": "#f9f9ff",
+                "surface-container-highest": "#d8e3fb",
+                "on-secondary-fixed": "#001f24",
+                "tertiary-fixed": "#e0e3e5",
+                "surface-dim": "#cfdaf2",
+                "on-secondary": "#ffffff",
+                "on-error": "#ffffff",
+                "on-tertiary-container": "#bcbfc1",
+                "error": "#ba1a1a",
+                "primary-fixed-dim": "#b1c5ff",
+                "surface-tint": "#2559bd",
+                "on-error-container": "#93000a",
+                "surface-variant": "#d8e3fb",
+                "on-secondary-container": "#00616d",
+                "on-primary-fixed-variant": "#00419e",
+                "on-surface": "#111c2d",
+                "on-primary": "#ffffff",
+                "surface-container-high": "#dee8ff",
+                "tertiary": "#343739",
+                "inverse-primary": "#b1c5ff",
+                "secondary-fixed-dim": "#00daf3",
+                "on-background": "#111c2d",
+                "tertiary-container": "#4b4e50",
+                "primary-fixed": "#dae2ff",
+                "surface-container-lowest": "#ffffff",
+                "secondary-fixed": "#9cf0ff",
+                "on-primary-container": "#a5bdff",
+                "secondary": "#006875",
+                "outline": "#737784",
+                "on-tertiary-fixed-variant": "#444749",
+                "primary": "#00327d",
+                "tertiary-fixed-dim": "#c4c7c9",
+                "outline-variant": "#c3c6d5",
+                "surface": "#f9f9ff",
+                "primary-container": "#0047ab",
+                "on-surface-variant": "#434653",
+                "inverse-on-surface": "#ecf1ff",
+                "on-tertiary": "#ffffff",
+                "on-secondary-fixed-variant": "#004f58",
+                "background": "#f9f9ff",
+                "error-container": "#ffdad6",
+                "on-primary-fixed": "#001946",
+                "surface-container": "#e7eeff",
+                "on-tertiary-fixed": "#191c1e"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "container-margin-desktop": "40px",
+                "container-margin-mobile": "16px",
+                "base": "8px",
+                "gutter": "24px",
+                "stack-lg": "48px",
+                "stack-sm": "12px",
+                "stack-md": "24px"
+        },
+        "fontFamily": {
+                "headline-lg-mobile": [
+                        "Hanken Grotesk"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "headline-xl": [
+                        "Hanken Grotesk"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Hanken Grotesk"
+                ],
+                "label-md": [
+                        "Geist"
+                ],
+                "label-sm": [
+                        "Geist"
+                ]
+        },
+        "fontSize": {
+                "headline-lg-mobile": [
+                        "28px",
+                        {
+                                "lineHeight": "36px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-xl": [
+                        "40px",
+                        {
+                                "lineHeight": "48px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.02em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        body {
+            background-color: #F8FAFC;
+        }
+        .ai-glow {
+            box-shadow: inset 0 0 0 2px rgba(0, 227, 253, 0.15);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.04);
+            border: 1px solid #E2E8F0;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-background selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin-mobile h-16 bg-surface shadow-sm md:px-container-margin-desktop">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-150" data-icon="menu">menu</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">RADS CLASSES</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-6 mr-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Resources</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Schedule</a>
+</div>
+<img alt="User profile avatar" class="w-10 h-10 rounded-full border-2 border-primary-container" data-alt="A professional close-up portrait of a student wearing smart academic attire, set against a soft-focus library background. The lighting is clean and bright, reflecting a high-key educational atmosphere. The image is crisp and utilizes the primary cobalt and white palette of the learning platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDipJLeuC9Qr65oQh1PxgcMYYWF7VBINW28ttfzjL_orexd-ha7fbuomec2NK-8lzVYxZtT3e5c9FWESJQ9dByzJX8hg-PaXxFowF7dNs-iR0tJLEO0XvHRHO8bXk2sAEO4lXAiV0ha1RiIbbE8SKOoUJ4csa3Phxa4wvlG0AcH8GO_a3QHU_OKrIdJeR-ArN5raU1C_q0jQX4k-rJvAzwzgb_uHaqpDoA3GF-L3skP_wih35urxsr8hAebHrqQfUYsd67ivZmsQHI"/>
+</div>
+</header>
+<main class="pt-20 pb-24 md:pb-8 lg:ml-80">
+<!-- Search and Hero Section -->
+<section class="px-container-margin-mobile md:px-container-margin-desktop mb-stack-md">
+<div class="relative w-full max-w-2xl mx-auto md:mx-0">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-lowest border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all ai-glow outline-none" placeholder="Search for subjects, topics, or lectures..." type="text"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-bold tracking-widest uppercase">AI Search</span>
+</div>
+</div>
+</section>
+<!-- Category Pills -->
+<section class="px-container-margin-mobile md:px-container-margin-desktop mb-stack-md">
+<div class="flex gap-3 overflow-x-auto pb-2 custom-scrollbar no-scrollbar">
+<button class="px-6 py-2 bg-primary text-on-primary rounded-full font-label-md text-label-md flex-shrink-0 active:scale-95 transition-transform">All Subjects</button>
+<button class="px-6 py-2 bg-surface-container-high text-on-surface-variant rounded-full font-label-md text-label-md flex-shrink-0 hover:bg-surface-container-highest transition-colors active:scale-95">Physics</button>
+<button class="px-6 py-2 bg-surface-container-high text-on-surface-variant rounded-full font-label-md text-label-md flex-shrink-0 hover:bg-surface-container-highest transition-colors active:scale-95">Chemistry</button>
+<button class="px-6 py-2 bg-surface-container-high text-on-surface-variant rounded-full font-label-md text-label-md flex-shrink-0 hover:bg-surface-container-highest transition-colors active:scale-95">Mathematics</button>
+<button class="px-6 py-2 bg-surface-container-high text-on-surface-variant rounded-full font-label-md text-label-md flex-shrink-0 hover:bg-surface-container-highest transition-colors active:scale-95">Biology</button>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter px-container-margin-mobile md:px-container-margin-desktop">
+<!-- My Courses Section (Bento Style) -->
+<div class="lg:col-span-8 space-y-stack-md">
+<header class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">My Courses</h2>
+<p class="text-on-surface-variant font-body-md">Keep track of your learning momentum.</p>
+</div>
+<button class="text-primary font-label-md hover:underline">View All</button>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- Course Card 1 -->
+<div class="bg-surface-container-lowest p-stack-md rounded-xl card-shadow group cursor-pointer hover:border-primary transition-all">
+<div class="flex justify-between mb-4">
+<span class="bg-primary-container/10 text-primary px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Physics</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="more_vert">more_vert</span>
+</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-2">Quantum Mechanics Fundamentals</h3>
+<p class="text-on-surface-variant text-body-md mb-6 line-clamp-2">Deep dive into the wave-particle duality and Schrödinger equations with AI-guided sims.</p>
+<div class="space-y-2">
+<div class="flex justify-between text-label-sm">
+<span>Progress</span>
+<span class="text-primary font-bold">65%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container w-[65%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="bg-surface-container-lowest p-stack-md rounded-xl card-shadow group cursor-pointer hover:border-primary transition-all ai-glow">
+<div class="flex justify-between mb-4">
+<span class="bg-secondary-container/20 text-on-secondary-container px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="bolt">bolt</span> AI Recommended
+                            </span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="more_vert">more_vert</span>
+</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-2">Organic Synthesis II</h3>
+<p class="text-on-surface-variant text-body-md mb-6 line-clamp-2">Master complex carbon chain transformations and reaction mechanisms.</p>
+<div class="space-y-2">
+<div class="flex justify-between text-label-sm">
+<span>Progress</span>
+<span class="text-primary font-bold">12%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container w-[12%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Video Library Section -->
+<section class="mt-stack-lg">
+<header class="mb-stack-md">
+<h2 class="font-headline-lg text-headline-lg text-primary">Recent Lectures</h2>
+<p class="text-on-surface-variant font-body-md">Watch and review your latest classroom sessions.</p>
+</header>
+<div class="space-y-4">
+<!-- Lecture Row 1 -->
+<div class="flex items-center gap-4 bg-surface-container-lowest p-3 rounded-xl card-shadow hover:bg-surface-container-low transition-colors group">
+<div class="relative w-24 h-16 md:w-32 md:h-20 flex-shrink-0 rounded-lg overflow-hidden">
+<img alt="Video thumbnail" class="w-full h-full object-cover" data-alt="A cinematic video thumbnail showing a digital chalkboard with complex calculus equations written in glowing blue and white. The background is a darkened modern laboratory setting, creating a mood of focused, high-level academic study. The overall style is clean, sharp, and technologically advanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvX4ecVr5PevlwZw5fvRvqPZuwEMmohbIxfzbjUkT4OR7Tqhv4kXL3xk2lv8x7UT4oFsGerVwZrdypPtUOMNV3JSTBRRYGwBJg5lkR2WG8WTZPIKvHWhrPZZOQohxA9fTP-iWzhqSnV10iQSISIDIjFZt3s-A8c76RAbbJY9Fz5yQuFU7BGg4DlHDahC5TW3iBdnUHu_cyxFVn9Sr5tXgkHwSiPCbTa83v37iTUiYaNoQl61Dt9PNfBqvG3mE82T4axs1zXYRsArA"/>
+<div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/0 transition-all">
+<span class="material-symbols-outlined text-white" data-icon="play_circle">play_circle</span>
+</div>
+</div>
+<div class="flex-grow">
+<h4 class="font-label-md text-label-md text-on-surface line-clamp-1">Differential Equations: Part 4</h4>
+<p class="text-label-sm text-on-surface-variant">24 mins • Yesterday</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-outline hover:text-primary transition-colors hover:bg-surface-container-high rounded-full" title="Download Notes">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+<button class="p-2 text-outline hover:text-primary transition-colors hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+</div>
+<!-- Lecture Row 2 -->
+<div class="flex items-center gap-4 bg-surface-container-lowest p-3 rounded-xl card-shadow hover:bg-surface-container-low transition-colors group">
+<div class="relative w-24 h-16 md:w-32 md:h-20 flex-shrink-0 rounded-lg overflow-hidden">
+<img alt="Video thumbnail" class="w-full h-full object-cover" data-alt="A bright educational video thumbnail showcasing 3D rendered atomic models floating in a clean, minimalist space. Soft lighting and vibrant primary blue accents highlight the scientific accuracy. The atmosphere is encouraging and clear, designed for an intelligent modern learning platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpgQ5KcUepFM-4GKKckOjuk2b6I3KXMOqOOmG7G0t5G2R9RgbgA0WnnDW6ExmRfMsJaFKWxRAqrmpS6k1cWA-hnxE14e3Irv5ZCfAV-7YcgpiSb033m2vtMUl6jHgMkAXp4GXctd9T2l0ymCKOwjGuDYZ1AU3QmviCAvSo4iJ5aEJb7_9TG2hG9k5DT_uTCGjOcuYwDh8zZmLpxeojIySODM9_vRW8MgK5xoc16dIAYBRaEuLJGta9rR6q0yITkOE-xkot-4-ya30"/>
+<div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/0 transition-all">
+<span class="material-symbols-outlined text-white" data-icon="play_circle">play_circle</span>
+</div>
+</div>
+<div class="flex-grow">
+<h4 class="font-label-md text-label-md text-on-surface line-clamp-1">Atomic Theory &amp; Shells</h4>
+<p class="text-label-sm text-on-surface-variant">42 mins • 2 days ago</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-outline hover:text-primary transition-colors hover:bg-surface-container-high rounded-full" title="Download Notes">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+<button class="p-2 text-outline hover:text-primary transition-colors hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Sidebar / Additional Info -->
+<aside class="lg:col-span-4 space-y-stack-md">
+<div class="bg-inverse-surface text-inverse-on-surface p-stack-md rounded-xl shadow-xl ai-glow">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed-dim" data-icon="psychology">psychology</span>
+                        AI Tutor Tip
+                    </h3>
+<p class="font-body-md mb-6 opacity-90">Based on your recent tests, you should focus on **Integration by Parts**. I've curated a 5-minute drill for you.</p>
+<button class="w-full py-3 bg-secondary-container text-on-secondary-container rounded-full font-bold active:scale-95 transition-transform">Start Drill</button>
+</div>
+<div class="bg-surface-container-lowest p-stack-md rounded-xl card-shadow">
+<h3 class="font-label-md text-label-md text-primary mb-4 uppercase tracking-widest">Upcoming Deadlines</h3>
+<div class="space-y-4">
+<div class="flex gap-3 items-start border-l-4 border-error pl-3">
+<div>
+<p class="font-label-md text-label-md leading-tight">Physics Quiz: Electromagnetism</p>
+<p class="text-label-sm text-error mt-1">Due in 2 hours</p>
+</div>
+</div>
+<div class="flex gap-3 items-start border-l-4 border-primary pl-3">
+<div>
+<p class="font-label-md text-label-md leading-tight">Math Assignment: Calculus III</p>
+<p class="text-label-sm text-on-surface-variant mt-1">Due Tomorrow, 11:59 PM</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- NavigationDrawer (Desktop SideNav) -->
+<nav class="hidden lg:flex flex-col h-screen fixed left-0 top-0 z-40 py-6 bg-surface border-r border-outline-variant w-80">
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+</div>
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary leading-none">Admin Portal</h2>
+<p class="text-label-sm text-on-surface-variant mt-1">RADS Management</p>
+</div>
+</div>
+<div class="space-y-1">
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 mx-2 hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body-md">Students</span>
+</a>
+<a class="flex items-center gap-4 bg-primary-container text-on-primary-container rounded-lg px-4 py-3 mx-2" href="#">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+<span class="font-body-md">Courses</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 mx-2 hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+<span class="font-body-md">Announcements</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 mx-2 hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+<span class="font-body-md">Attendance</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 mx-2 hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</div>
+</nav>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-lowest shadow-[0_-4px_20px_0_rgba(0,0,0,0.04)] rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+<span class="font-label-sm text-label-sm">Courses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span>
+<span class="font-label-sm text-label-sm">Tests</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-label-sm text-label-sm">AI</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple search interactivity
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.02]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.02]');
+        });
+
+        // Toggle mobile menu simulation
+        document.querySelector('button[data-icon="menu"]').addEventListener('click', () => {
+            alert('Menu triggered. This would open the lateral drawer on mobile.');
+        });
+    </script>
+</body></html>
